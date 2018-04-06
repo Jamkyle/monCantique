@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "name" : "MonFihirana",
+    "icon" : "./launch_screen.png",
+    "slug" : "monfihirana",
+    "version" : "alpha.0.0",
+    "sdkVersion": "25.0.0",
+    "privacy" : "public",
+    "description" : "Cette application à pour but d'aider les francophone à comprendre les chants FFPM malgache",
+    "splash" : {
+      "backgroundColor" : "#FFF",
+      "image" : "./splash_screen.png"
+    }
+  }
+}
