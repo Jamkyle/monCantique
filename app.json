@@ -1,7 +1,6 @@
 {
   "expo": {
     "name" : "MonFihirana",
-    "icon" : "./launch_screen.png",
     "slug" : "monfihirana",
     "version" : "alpha.0.0",
     "sdkVersion": "25.0.0",

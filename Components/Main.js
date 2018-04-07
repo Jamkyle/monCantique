@@ -20,7 +20,7 @@ class Main extends Component {
     const { TI_search } = this.refs //text input
     TI_search.blur()
     this.setState({number : 5 })
-    if(id !== null && id !== "" )
+    if(id !== null && id !== "" && id.match(/\d+/) !== null && id !== "0" )
       go("LeCantique", id)
   }
 
@@ -57,7 +57,7 @@ class Main extends Component {
     }else {
       permut = this.Permut.num
     }
-    this.setState({ toggle : e, permut : permut })
+    this.setState({ toggle : e, permut : permut, id: '' })
   }
 
   componentWillReceiveProps(nextProps){
@@ -81,11 +81,6 @@ class Main extends Component {
       loadMore = <ListItem title='LoadMore' onPress={ () => { this.setState({ number : this.state.number+5 }) } } />
     return (
       <View style={{ width: '100%', flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <Text>Num  </Text>
-          <Switch onValueChange={ this._handleToggle } value={ this.state.toggle } onTintColor={'#aaa'}/>
-          <Text>  Text</Text>
-        </View>
         <Text>{this.state.permut.title}</Text>
           <SearchBar
             clearIcon
@@ -99,7 +94,12 @@ class Main extends Component {
             onEndEditing = { this.state.permut.func }
             onClear={() => this.setState({id : '' } )}
             onChangeText={ (text) => this.setState({id : text } )}
-            autoFocus blurOnSubmit/>
+            autoFocus blurOnSubmit value={this.state.id}/>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Text>Num  </Text>
+              <Switch onValueChange={ this._handleToggle } value={ this.state.toggle } onTintColor={'#aaa'}/>
+              <Text>  Text</Text>
+            </View>
         <ScrollView style={{ width: '100%'}} >
           <List containerStyle={{ marginBottom: 20, width : '100%' }}>
             { listCantique }

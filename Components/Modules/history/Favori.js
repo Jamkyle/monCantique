@@ -53,7 +53,7 @@ class Favori extends Component {
 }
 
 export default connect(
-state => ({state}),
+state => ({ state }),
 (dispatch, { navigation }) => {
   return{
     go: (route, id) => navigation.dispatch(NavigationActions.navigate({routeName: route, params: id }))

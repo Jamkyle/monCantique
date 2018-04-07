@@ -6,8 +6,8 @@ export const cantiqueStateReducer = (state = {cantique : ''}, action ) => {
    case 'GET_CANTIQUE_RECEIVE':
     if ( action.data.items[0] !== undefined ) {
        return {
-             cantique : action.data.items[0].description
-           }
+        cantique : action.data.items[0].description
+       }
     }
     else {
        return {
@@ -51,7 +51,6 @@ export const recentCantique = (state = [], action) => {
 export const favCantique = (state = [], action) => {
   switch (action.type) {
     case 'FAV_LIST_CANTIQUE':
-    console.log(action.list);
       return action.list
     default:
       return state

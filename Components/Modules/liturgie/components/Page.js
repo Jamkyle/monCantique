@@ -4,8 +4,14 @@ import { View, Text, Button, AsyncStorage} from 'react-native';
 import { Icon, List, ListItem } from 'react-native-elements';
 import { NavigationActions } from 'react-navigation';
 
-export class Page extends Component {
+class Page extends Component {
   render(){
-    
+    return (
+      <View style={{ alignItems:'center' }} >
+        <Text style={{ textAlign : 'center' }} >{ this.props.content }</Text>
+      </View>
+    )
   }
 }
+
+export default Page

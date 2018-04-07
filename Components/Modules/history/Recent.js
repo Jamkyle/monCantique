@@ -39,7 +39,7 @@ class Recent extends Component {
 
   render() {
     let list = this.state.listRec.map((e, i) => {
-      return <ListItem key={'rec-'+i} title={e} onPress={()=> this.props.go("LeCantique", e.toString() )} />
+      return <ListItem key={'rec-'+i} title={e} onPress={ ()=> this.props.go("LeCantique", e.toString() )} />
     })
     return (
       <ScrollView>

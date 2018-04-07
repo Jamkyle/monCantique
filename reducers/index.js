@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import Routes from '../Components/Routes';
 import { NavigationActions} from 'react-navigation';
 import { cantiqueStateReducer, traductionState, listCantique, recentCantique, favCantique } from '../Components/Modules/cantiques/CantiqueState'
+import { liturgieStateReducer } from '../Components/Modules/liturgie/liturgieState'
 import { firebaseReducer } from 'react-redux-firebase'
 
 /*const initState = BaseNavigation.router.getStateForAction(
@@ -22,5 +23,6 @@ export default combineReducers({
   state : ( state = { } ) => state,
   aCantique: cantiqueStateReducer,
   listRec : recentCantique,
-  listFav : favCantique
+  listFav : favCantique,
+  pages : liturgieStateReducer
 });
