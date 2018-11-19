@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Text, View, Button, Platform } from 'react-native';
+import { Icon } from 'react-native-elements';
 import { StackNavigator, TabNavigator, TabBarBottom, HeaderBackButton } from 'react-navigation'; // 1.0.0-beta.11
 import MainContainer from './MainContainer';
 import CantiqueContainer from './Modules/cantiques/CantiqueContainer';
@@ -13,6 +14,7 @@ export const MainTab = TabNavigator({
   Favori : { screen : Favori},
   Liturgie : { screen : Liturgie, headerMode: 'none' },
 },{
+  mode:'modal',
   swipeEnabled : true,
   tabBarOptions: {
     ...Platform.select({
@@ -40,7 +42,7 @@ const Routes = StackNavigator(
   LeCantique : {
     screen : CantiqueContainer,
     navigationOptions: ({ navigation }) => ({
-      headerLeft : <HeaderBackButton title='Home' onPress={ () => navigation.popToTop() } />
+      headerLeft : <HeaderBackButton icon={name='close'} onPress={ () => navigation.popToTop() } />
     })
   }
 });

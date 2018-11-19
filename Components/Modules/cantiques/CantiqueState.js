@@ -56,3 +56,12 @@ export const favCantique = (state = [], action) => {
       return state
   }
 }
+
+export const switchShow = (state = [], action) => {
+  switch (action.type) {
+    case 'CHANGE_SHOW_STATE':
+      return !action.show
+    default:
+      return state
+  }
+}

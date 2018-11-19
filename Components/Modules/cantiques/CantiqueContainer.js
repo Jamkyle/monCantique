@@ -13,8 +13,9 @@ export default compose(
   (dispatch, { navigation }) => {
     return {
       getTrad : (id, firebase) => dispatch({ type:'GET_TRAD',  id: id, firebase : firebase}),
-      go: (route, id) => navigation.dispatch(NavigationActions.navigate({routeName: route, params: id })),
-      storeIn : (val, key) => dispatch({type : 'ADD_TO_AS', val :val, key: key})
+      go: (route, id) => navigation.dispatch( NavigationActions.navigate({routeName: route, params: id }) ),
+      storeIn : (val, key) => dispatch({type : 'ADD_TO_AS', val :val, key: key}),
+      switchShow : ( show ) => dispatch({ type: 'CHANGE_SHOW_STATE', show: show } )
     }
   }
 ))

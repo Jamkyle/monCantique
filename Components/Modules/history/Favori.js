@@ -14,7 +14,7 @@ class Favori extends Component {
     .catch( error => console.log('error!') )
   }
 
-  componentDidUpdate( nextProps, nextState ){
+  componentWillUpdate( nextProps, nextState ){
     console.log('update');
     if( nextProps !== this.props )
       AsyncStorage.getItem('@favorite').then( res => {
@@ -37,14 +37,27 @@ class Favori extends Component {
   }
 
   render() {
-    let list = this.state.listFav.map((e, i) => {
+    let listFFPM = this.state.listFav.map((e, i) => {
       return <ListItem key={'rec-'+i} title={e} onPress={()=> this.props.go("LeCantique", e )} />
     })
     return (
       <View>
         <Text> Cantiques préférés </Text>
+        <Text> FFPM </Text>
         <List>
-          {list}
+          {listFFPM}
+        </List>
+        <Text> TSANTA </Text>
+        <List>
+
+        </List>
+        <Text> ANTEMA </Text>
+        <List>
+
+        </List>
+        <Text> FIHIRANA FANAMPINY </Text>
+        <List>
+
         </List>
         <Icon name='delete' onPress={ this.removeList } />
       </View>
@@ -56,7 +69,7 @@ export default connect(
 state => ({ state }),
 (dispatch, { navigation }) => {
   return{
-    go: (route, id) => navigation.dispatch(NavigationActions.navigate({routeName: route, params: id }))
+    go: (route, id) => navigation.dispatch(NavigationActions.navigate({routeName: route, params: id, action : dispatch(NavigationActions.navigate({routeName: route, params: id})) }))
   }
 }
 )(Favori);

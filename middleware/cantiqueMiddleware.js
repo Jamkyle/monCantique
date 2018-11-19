@@ -17,6 +17,18 @@ export default cantiqueMiddleware = store => next => action => {
       })
     }
 
+    if(action.type === 'STACK_NUM'){
+      console.log( Array.isArray(store.getState().Num) );
+      console.log(store.getState().Num === [] && action.num !== 0 );
+      ( store.getState().Num.length < 1 && action.num === 0 ) ? null : next(action)
+    }
+    if(action.type === 'REMOVE_NUM'){
+      next(action)
+    }
+    if(action.type === 'CLEAR_NUM'){
+      next(action)
+    }
+
     if( action.routeName === 'LeCantique'){
       fetch(BASE_URL + "d=idsearch&da=" + action.params + "&r=json")
       .then( response => response.json() )
@@ -52,7 +64,10 @@ export default cantiqueMiddleware = store => next => action => {
             if ( !el.includes(val) ) {
               arr = [val, ...el]
               AsyncStorage.setItem( key, JSON.stringify(arr) )
-              .then( json => console.log('success! '+key) )
+              .then( json => {
+                next({type:'FAV_LIST_CANTIQUE', list: arr })
+                console.log('success! '+key)
+              } )
               .catch(error => console.log('error!'));
             }
           }else {

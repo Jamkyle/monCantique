@@ -15,7 +15,8 @@ export default compose(
   (dispatch, { navigation }) => {
     return {
       go: (route, id) => navigation.dispatch(NavigationActions.navigate({routeName: route, params: id, action : dispatch(NavigationActions.navigate({routeName: route, params: id})) })),
-      getList : (txt, firebase) => dispatch({ type:'GET_LIST_BY_TITLE',  id: txt, firebase : firebase})
-    }
+      getList : (txt, firebase) => dispatch({ type:'GET_LIST_BY_TITLE',  id: txt, firebase : firebase}),
+      clearNum : () => dispatch({type:'CLEAR_NUM'})
+      }
   }
 ))(Main);
