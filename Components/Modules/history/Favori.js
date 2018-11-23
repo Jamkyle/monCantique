@@ -15,7 +15,7 @@ class Favori extends Component {
   }
 
   componentWillUpdate( nextProps, nextState ){
-    console.log('update');
+    // console.log('update');
     if( nextProps !== this.props )
       AsyncStorage.getItem('@favorite').then( res => {
         if (res !== null) {

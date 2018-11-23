@@ -22,7 +22,7 @@ class Strophes extends Component {
     // this.state.show ? trad = <Text style={{ ...this.font, fontSize : this.props.size, textAlign:'center', color : '#2e6ea8', marginBottom:20  }} > { this.props.trad } </Text> : trad = null
     return (
       <TouchableWithoutFeedback onPress={ this._press }>
-        <View style={{  alignItems: 'center', justifyContent: 'center', flex:1}}>
+        <View style={{ alignItems: 'center', justifyContent: 'center', flex:1 }}>
           <Text style={{ ...this.font, fontSize : this.props.size, textAlign:'center', color : '#082b4b', marginBottom: 10  }} > { this.props.content } </Text>
           { this.state.show && <Text style={{ ...this.font, fontSize : this.props.size, textAlign:'center', color : '#2e6ea8', marginBottom:20  }} > { this.props.trad } </Text> }
         </View>

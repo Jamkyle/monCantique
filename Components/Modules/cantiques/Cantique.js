@@ -1,20 +1,25 @@
 import React, { Component } from 'react';
-import { Modal, ScrollView, View, Text, TouchableNativeFeedback,TouchableWithoutFeedback, AsyncStorage, Animated} from 'react-native';
+import { Modal, ScrollView,FlatList, View, Text, TouchableNativeFeedback,TouchableWithoutFeedback, AsyncStorage, Animated} from 'react-native';
 import { Button } from 'react-native-elements'
 import _ from 'lodash'
 import { Font } from 'expo'
 import { getVal } from 'react-redux-firebase'
 import { Icon, Header , Overlay, Slider} from 'react-native-elements';
 import Strophes from './Strophes'
+import { createStackNavigator, createMaterialTopTabNavigator } from 'react-navigation';
+
+
 
 class Cantique extends Component {
   static navigationOptions = {
     title: 'Le Cantique',
     header : null
   }
+
   state = {
-    hira : '', traduction:'', size : 14, color : '#082b4b', favorite : 'favorite-border', show : false, slideShow: false
+    hira : '', traduction:'', size : 14, color : '#082b4b', favorite : 'favorite-border', show : false, slideShow: false, title: []
   }
+
   font = {}
   double = true
   lastPress = 0
@@ -140,14 +145,16 @@ class Cantique extends Component {
             leftComponent={<Icon name='close' onPress={ () => navigation.popToTop() }/>}
             innerContainerStyles ={{ justifyContent: 'space-between' }}
             outerContainerStyles={{ width : '100%', height: '10%', backgroundColor:'rgba(0, 47, 139, 0)'}}
-            centerComponent={{ text : id.toString(), style: {color :'rgb(0, 47, 139)', fontSize:30} }}
+            centerComponent={{ text : navigation.state.params, style: {color :'rgb(0, 47, 139)', fontSize:30} }}
           />
           <Text>{}</Text>
           <View style={{flex:1, flexDirection:'row'}}>
             <ScrollView style={{ flex:1, width : '88%', marginLeft:50}}>
               <Text style={{color: '#a7a7a7', fontSize:9, textAlign:'center'}} > clique sur un vers pour voir la traduction </Text>
               <Icon name='touch-app' color='#aaa' size={12}/>
-              { content }
+              <View style={{marginBottom:50}} >
+                { content }
+              </View>
             </ScrollView>
             <View style={{ marginRight :-25, height:'25%', flexDirection:'column', alignItems:'center', justifyContent:'space-between' }}>
               { <Button style={{flex:1, justifyContent:'center', width:50 }} fontSize={14} color={'#555'} buttonStyle={{...styles.police}} title={ !this.state.slideShow ? 'aA' : this.state.size.toString()} onPress={ ()=> this.setState({ slideShow: !this.state.slideShow }) } /> }

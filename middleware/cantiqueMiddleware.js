@@ -13,14 +13,14 @@ export default cantiqueMiddleware = store => next => action => {
           let key = JSON.stringify(obj).match(/(?:")(.*)(?:"\:{)/)[1]
           next({ type: 'GET_TRAD', trad : obj[key] })
       }).catch( e => {
-        next({ type: 'GET_TRAD', trad : { strophe : [{ trad: 'Aucune traduction trouvée' }] } })
+        next({ type: 'GET_TRAD', trad : { strophe : [{ trad: 'Désolé, traduction non disponible' }] } })
       })
     }
 
     if(action.type === 'STACK_NUM'){
-      console.log( Array.isArray(store.getState().Num) );
-      console.log(store.getState().Num === [] && action.num !== 0 );
-      ( store.getState().Num.length < 1 && action.num === 0 ) ? null : next(action)
+      // console.log( Array.isArray(store.getState().Num) );
+      // console.log(store.getState().Num === [] && action.num !== 0 );
+      ( store.getState().Num.length < 1 && action.num === 0) ? null : next(action)
     }
     if(action.type === 'REMOVE_NUM'){
       next(action)
@@ -33,7 +33,7 @@ export default cantiqueMiddleware = store => next => action => {
       fetch(BASE_URL + "d=idsearch&da=" + action.params + "&r=json")
       .then( response => response.json() )
       .then( data => {
-        next({ type: 'GET_CANTIQUE_RECEIVE', data })
+        next({ type: 'GET_CANTIQUE_RECEIVE', data : data })
       })
     }
 

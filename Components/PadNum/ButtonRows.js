@@ -21,7 +21,7 @@ const ButtonRows = ( props ) => {
 
 
   buttons = props.value.map((i) => {
-    return <Button title={i.toString()} key={i+'num'} buttonStyle={ isNaN(i) ? {...props.colors[i.toString()], ...props.buttonStyle} : props.buttonStyle } fontSize={props.size} onPress={ () => _onPress(i) }/>
+    return <Button outline={true} title={i.toString()} key={i+'num'} buttonStyle={ isNaN(i) ? {...props.colors[i.toString()], ...props.buttonStyle} : props.buttonStyle } color='#67b' fontSize={props.size} onPress={ () => _onPress(i) }/>
   })
 
   return (

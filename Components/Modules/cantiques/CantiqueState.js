@@ -1,12 +1,12 @@
-const initState = { strophe : [ { trad:'Aucune traduction trouvée'} ] }
+const initState = { strophe : [ { trad:'Désolé, traduction non disponible!'} ] }
 
-export const cantiqueStateReducer = (state = {cantique : ''}, action ) => {
+export const cantiqueStateReducer = (state = {cantique : '', arr : []}, action ) => {
   // console.log(action);
   switch (action.type) {
    case 'GET_CANTIQUE_RECEIVE':
     if ( action.data.items[0] !== undefined ) {
        return {
-        cantique : action.data.items[0].description
+        cantique : action.data.items[0].description,
        }
     }
     else {

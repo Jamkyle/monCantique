@@ -21,7 +21,7 @@ const PadNum = (props) => {
       </View>
       <View style={{flex:1, justifyContent: 'flex-end', flexDirection:'row'}}>
         <ButtonRows value={[0]} buttonStyle={Styles.Button} size={16}/>
-        <Icon name='backspace' color='#99b' size={45} containerStyle={{...Styles.Button, margin: 15}} underlayColor='rgba(0,0,0,0)' onPress={ () => props.removeNum() } />
+        <Icon name='backspace' color='#99b' size={45} containerStyle={{...Styles.Icon, margin: 15}} underlayColor='rgba(0,0,0,0)' onPress={ () => props.removeNum() } />
       </View>
     </View>
   )
@@ -29,6 +29,15 @@ const PadNum = (props) => {
 
 const Styles = {
   Button : {
+    borderRadius : 100,
+    height:60,
+    width:60,
+    borderWidth: 2,
+    borderColor : '#67b',
+    backgroundColor : 'rgba(67,170,190,0)',
+    marginTop: 5
+  },
+  Icon : {
     borderRadius : 100,
     height:60,
     width:60,

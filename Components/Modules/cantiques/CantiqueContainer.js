@@ -18,5 +18,4 @@ export default compose(
       switchShow : ( show ) => dispatch({ type: 'CHANGE_SHOW_STATE', show: show } )
     }
   }
-))
-(Cantique);
+))(Cantique);

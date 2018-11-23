@@ -14,10 +14,9 @@ class Main extends Component {
   }
 
   list = []
+
   static navigationOptions = {
-    title: 'Recherche',
-    tabBarIcon : ( { focused, tintColor } ) => <Icon name='search'
-    color={ focused ? '#888' : tintColor }/>,
+    title: 'Feony',
   }
 
   numSearch = (params) => {
@@ -98,12 +97,12 @@ class Main extends Component {
 
     var listCantique = this.list.map( ( e , i ) => {
       if(i < this.state.number)
-        return <ListItem key={ e.id +'-'+ i } title={ e.id + '. '+e.titre } onPress={ () => { go("LeCantique", e.id) } } />
+        return <ListItem key={ e.id +'-'+ i } title={ e.id + '. '+e.titre } onPress={ () => { go("LeCantique", e.id, this.state.title) } } />
     })
     var loadMore = null
     var listShow = null
-    let buttons = this.state.title.map(i => {
-      return <ButtonAnime key={i} title={i} buttonStyle={Styles.ButtonAnime} color={Styles.Colors[i]} onPress={ this.numSearch }/>
+    let buttons = this.state.title.map((i, e, arr) => {
+      return <ButtonAnime key={i} title={i} buttonStyle={Styles.ButtonAnime} color={Styles.Colors[i]} arr={arr} index={e} onPress={ this.numSearch }/>
     })
     if (listCantique.length > 1)
       listShow = (<ScrollView style={{ width: '100%'}} >
@@ -116,7 +115,7 @@ class Main extends Component {
       loadMore = <ListItem title='LoadMore' onPress={ () => { this.setState({ number : this.state.number+5 }) } } />
     return (
       <View style={{ width: '100%', flex: 2, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>{ this.state.permut.title }</Text>
+
         <View style={{ flexDirection:'row'}}>
           <View style={{ ...Styles.TextBorder, flexDirection:'row', justifyContent: 'center' }}>
             <Text style={{ fontSize : 40, height:50}}>{ numero }</Text>
@@ -127,7 +126,7 @@ class Main extends Component {
           <PadNum />
         </View>
 
-        <View style={{ flexDirection:'row', flex: 1}}>
+        <View style={{ flexDirection:'row', flex: 1, marginTop:50}}>
           {buttons}
           {/*<ButtonRows value={this.state.title} size={13} buttonStyle={Styles.Button} colors={Styles.Colors} onPress={ this.numSearch }/>*/}
         </View>
@@ -155,7 +154,6 @@ class Main extends Component {
         //   onPress={ this.state.permut.func }
         // />
       }
-        {listShow}
       </View>
     );
   }

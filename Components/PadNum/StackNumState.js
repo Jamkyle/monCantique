@@ -5,7 +5,10 @@ export const stackNumStateReducer = (state = [], action) => {
       if( state[0] === 0)
         state = []
       if(state.length < 3)
-        return [...state, action.num]
+        {
+          let num = [...state, action.num]
+          return num.join('') < 828 ? num : state
+        }
       else
         return state
     case 'REMOVE_NUM':

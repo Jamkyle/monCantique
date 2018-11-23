@@ -15,7 +15,9 @@ class Liturgie extends Component {
     tabBarIcon : ( { focused, tintColor } ) => <Icon name='bookmark' type='material-community'
     color={focused ? '#888' : tintColor } />
   }
+
   MainPage = null
+
   componentWillMount(){
     const { getPages, firebase } = this.props
     const { pages } = this.props.state
@@ -37,12 +39,12 @@ class Liturgie extends Component {
       <View>
         <Header
           innerContainerStyles ={{ justifyContent: 'space-around' }}
-          outerContainerStyles={{ width : '100%', height: 40, backgroundColor: '#fff', ...styles.containerStyle }}
+          outerContainerStyles={{ width : '100%', height: 50, backgroundColor: '#fff', ...styles.containerStyle }}
           leftComponent={ this.state.id > 1 ? <Icon name='keyboard-arrow-left' color='rgb(0, 47, 139)' onPress={ () => getPages( (parseInt(this.state.id)-1).toString(), firebase ) }/> : null }
-          centerComponent={{ text : pages.title, style: {color :'rgb(0, 47, 139)'} }}
+          centerComponent={{ text : pages.title, style: { color :'rgb(0, 47, 139)' } }}
           rightComponent={ this.state.id < 23 ? <Icon name='keyboard-arrow-right' color='rgb(0, 47, 139)' onPress={ () => getPages( parseInt(this.state.id)+1, firebase ) }/> : null}
         />
-        <Page content={pages.content}/>
+        <Page content={ pages.content } />
       </View>
     )
   }
@@ -70,7 +72,7 @@ export default compose(
   (state) => ({state}),
   (dispatch, { navigation }) => {
     return {
-      getPages : ( id, firebase ) => NavigationActions.navigate('Liturgie', null ,dispatch({ type:'GET_PAGES',  id: id, firebase : firebase })),
+      getPages : ( id, firebase ) => NavigationActions.navigate('Liturgie', null, dispatch({ type:'GET_PAGES',  id: id, firebase : firebase })),
       go: ( route, id ) => navigation.dispatch(NavigationActions.navigate({routeName: route, params: id }))
     }
   }
